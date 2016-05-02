@@ -10,7 +10,7 @@
         @include('includes.admin.styles')
     @show
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-red sidebar-mini">
 <div class="wrapper" id="app">
     @section('navbar')
         @include('includes.admin.navbar')
