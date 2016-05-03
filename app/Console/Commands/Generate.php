@@ -50,5 +50,11 @@ class Generate extends Command
 
         $content = view('generator.templates.controller', compact('json'))->render();
         $filesystem->put(resource_path() . '/views/generator/' . ucfirst($json->table) . 'Controller.php', "<?php \n" . $content);
+
+        $content = view('generator.templates.views.create', compact('json'))->render();
+        $filesystem->put(resource_path() . '/views/generator/' . 'create.blade.php', $content);
+
+        $content = view('generator.templates.views.edit', compact('json'))->render();
+        $filesystem->put(resource_path() . '/views/generator/' . 'edit.blade.php', $content);
     }
 }
