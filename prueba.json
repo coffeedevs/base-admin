@@ -1,0 +1,14 @@
+{
+  "model": "Client",
+  "table": "clients",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "address",
+      "type": "string"
+    }
+  ]
+}
