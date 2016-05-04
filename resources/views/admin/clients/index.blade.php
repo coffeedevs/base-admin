@@ -29,7 +29,7 @@
                             <form class="delete-form"
                                   action="{{route('admin.clients.destroy',['id'=>$client->id])}}" method="post"
                                   enctype="multipart/form-data">
-                                <input type="hidden" name="_token" value="">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <input name="_method" type="hidden" value="DELETE">
                                 <a href="{{route('admin.clients.edit',['id'=>$client->id])}}"
                                    class="btn btn-success btn-block btn-sm">Editar</a>

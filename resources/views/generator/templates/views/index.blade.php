@@ -32,7 +32,7 @@
                             <form class="delete-form"
                                   action="{!! "@{{route('admin.$json->table.destroy',['id'=>\${$itemName}->id])}}" !!}" method="post"
                                   enctype="multipart/form-data">
-                                <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                                <input type="hidden" name="_token" value="{!! "@{{ csrf_token() }}" !!}">
                                 <input name="_method" type="hidden" value="DELETE">
                                 <a href="{!! "@{{route('admin.$json->table.edit',['id'=>\${$itemName}->id])}}" !!}"
                                    class="btn btn-success btn-block btn-sm">Editar</a>
