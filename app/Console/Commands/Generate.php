@@ -44,8 +44,8 @@ class Generate extends Command
         $content = view('generator.templates.model', compact('json'))->render();
         $filesystem->put(app_path() . '/' . $json->model . '.php', "<?php \n" . $content);
 
-//        $content = view('generator.templates.migration', compact('json'))->render();
-//        $filesystem->put(base_path() . '/database/migrations/' . date('Y_m_d_His') . '_create_' . $json->table . '_table.php', "<?php \n" . $content);
+        $content = view('generator.templates.migration', compact('json'))->render();
+        $filesystem->put(base_path() . '/database/migrations/' . date('Y_m_d_His') . '_create_' . $json->table . '_table.php', "<?php \n" . $content);
 
         $content = view('generator.templates.controller', compact('json'))->render();
         $filesystem->put(app_path() . '/Http/Controllers/Admin/' . ucfirst($json->table) . 'Controller.php', "<?php \n" . $content);

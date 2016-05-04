@@ -1,19 +1,20 @@
+<?php 
 namespace App;
 use Illuminate\Database\Eloquent\Model;
 
-class {{ $json->model }} extends Model
+class Supplier extends Model
 {
 /**
 * The attributes that are mass assignable.
 *
-* @var array
+* @var  array
 */
-protected $fillable = [@foreach($json->fields as $field) '{{ $field->name }}', @endforeach];
+protected $fillable = [ 'name',  'address',  'cbu', ];
 
 /**
 * The attributes that should be hidden for arrays.
 *
-* @var array
+* @var  array
 */
 protected $hidden = ['password', 'remember_token',];
 }

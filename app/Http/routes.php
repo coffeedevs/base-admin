@@ -21,6 +21,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => ['auth'], 'prefix' => 'adm
     Route::post('password', 'HomeController@postPassword')->name('admin.password.change');
     Route::resource('model', 'ModelController');
     Route::resource('clients','ClientsController');
+    Route::resource('suppliers','SuppliersController');
 });
 
 

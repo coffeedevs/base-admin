@@ -1,6 +1,6 @@
 {
-  "model": "Client",
-  "table": "clients",
+  "model": "Supplier",
+  "table": "suppliers",
   "fields": [
     {
       "name": "name",
@@ -9,6 +9,10 @@
     {
       "name": "address",
       "type": "string"
+    },
+    {
+      "name": "cbu",
+      "type": "integer"
     }
   ]
 }
