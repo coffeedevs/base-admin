@@ -22,14 +22,14 @@ class Generate extends Command
     public function handle()
     {
         if ($this->option('json')) $file = $this->filesystem->get(base_path() . '/' . $this->option('json'));
-        else $file = $this->filesystem->get(base_path() . '/');
-        $json = json_decode($file);
-
-        $this->generateModel($json);
-        if ($this->option('migrate')) $this->generateMigration($json);
-        $this->generateController($json);
-        $this->generateViews($json);
-
+        else $file = $this->filesystem->get(base_path() . '/schema.json');
+        $schemas = json_decode($file);
+        foreach ($schemas as $json) {
+            $this->generateModel($json);
+            if ($this->option('migrate')) $this->generateMigration($json);
+            $this->generateController($json);
+            $this->generateViews($json);
+        }
     }
 
     private function generateModel($json)

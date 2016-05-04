@@ -1,0 +1,22 @@
+[
+  {
+    "model": "Client",
+    "table": "clients",
+    "fields": [
+      {
+        "name": "name",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "model": "Supplier",
+    "table": "suppliers",
+    "fields": [
+      {
+        "name": "name",
+        "type": "string"
+      }
+    ]
+  }
+]

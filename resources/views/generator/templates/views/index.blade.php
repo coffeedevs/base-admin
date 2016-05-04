@@ -13,24 +13,25 @@
                     <thead>
                     <tr>
                         <th>Id</th>
-@foreach($json->fields as $field)
-                        <th>{{ ucfirst($field->name) }}</th>
-@endforeach
+                        @foreach($json->fields as $field)
+                            <th>{{ ucfirst($field->name) }}</th>
+                        @endforeach
                         <th>Acción</th>
                     </tr>
                     </thead>
                     <tbody>
-<?php $itemName = lcfirst($json->model); ?>
+                    <?php $itemName = lcfirst($json->model); ?>
                     {!! "@@foreach(\$$json->table as \$$itemName)" !!}
                     <tr>
                         <td>{!! "@{{\${$itemName}->id}}" !!}</td>
-@foreach($json->fields as $field)
+                        @foreach($json->fields as $field)
                             <td>{!! "@{{\${$itemName}->$field->name}}" !!}</td>
-@endforeach
+                        @endforeach
 
                         <td>
                             <form class="delete-form"
-                                  action="{!! "@{{route('admin.$json->table.destroy',['id'=>\${$itemName}->id])}}" !!}" method="post"
+                                  action="{!! "@{{route('admin.$json->table.destroy',['id'=>\${$itemName}->id])}}" !!}"
+                                  method="post"
                                   enctype="multipart/form-data">
                                 <input type="hidden" name="_token" value="{!! "@{{ csrf_token() }}" !!}">
                                 <input name="_method" type="hidden" value="DELETE">
