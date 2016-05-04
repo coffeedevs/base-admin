@@ -1,50 +1,47 @@
-{!! "@@extends('layouts.admin')" !!}
-{!! "@@section('content')" !!}
+@extends('layouts.admin')
+@section('content')
 <div class="row">
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">{{ucfirst($json->table)}}</h3>
+                <h3 class="box-title">Clients</h3>
             </div>
             <div class="box-body">
-                {!! "@@include('includes.admin.messages')" !!}
-                {!! "@@if(!\${$json->table}->isEmpty())" !!}
+                @include('includes.admin.messages')
+                @if(!$clients->isEmpty())
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                     <tr>
                         <th>Id</th>
-@foreach($json->fields as $field)
-                        <th>{{ ucfirst($field->name) }}</th>
-@endforeach
+                        <th>Name</th>
+                        <th>Address</th>
                         <th>Acción</th>
                     </tr>
                     </thead>
                     <tbody>
-<?php $itemName = lcfirst($json->model); ?>
-                    {!! "@@foreach(\$$json->table as \$$itemName)" !!}
+                    @foreach($clients as $client)
                     <tr>
-                        <td>{!! "@{{\${$itemName}->id}}" !!}</td>
-@foreach($json->fields as $field)
-                            <td>{!! "@{{\${$itemName}->$field->name}}" !!}</td>
-@endforeach
+                        <td>{{$client->id}}</td>
+                            <td>{{$client->name}}</td>
+                            <td>{{$client->address}}</td>
 
                         <td>
                             <form class="delete-form"
-                                  action="{!! "@{{route('admin.$json->table.destroy',['id'=>\${$itemName}->id])}}" !!}" method="post"
+                                  action="{{route('admin.clients.destroy',['id'=>$client->id])}}" method="post"
                                   enctype="multipart/form-data">
-                                <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                                <input type="hidden" name="_token" value="">
                                 <input name="_method" type="hidden" value="DELETE">
-                                <a href="{!! "@{{route('admin.$json->table.edit',['id'=>\${$itemName}->id])}}" !!}"
+                                <a href="{{route('admin.clients.edit',['id'=>$client->id])}}"
                                    class="btn btn-success btn-block btn-sm">Editar</a>
                                 <button type="submit" class="btn btn-danger btn-block btn-sm">Borrar
                                 </button>
                             </form>
                         </td>
                     </tr>
-                    {!! "@@endforeach" !!}
+                    @endforeach
                     </tbody>
                 </table>
-                {!! "@@else" !!}
+                @else
                 <div class="col-md-6">
                     <div class="box box-default">
                         <div class="box-body">
@@ -52,19 +49,19 @@
                                 <h4>No hay ninguna novedad cargada</h4>
 
                                 <p>Por qué no subes una entrando <a
-                                            href="{!! "@{{ route('admin.$json->table.create') }}" !!}">aquí</a>?</p>
+                                            href="{{ route('admin.clients.create') }}">aquí</a>?</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                {!! "@@endif" !!}
+                @endif
             </div>
         </div>
     </div>
 </div>
-{!! "@@stop" !!}
-{!! "@@section('scripts')" !!}
-{!! "@@parent" !!}
+@stop
+@section('scripts')
+@parent
 <script>
     table = $("#example2").DataTable(
             {
@@ -114,4 +111,4 @@
                 });
     });
 </script>
-{!! "@@stop" !!}
+@stop
