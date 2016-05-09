@@ -50,7 +50,7 @@
                     <div class="box box-default">
                         <div class="box-body">
                             <div class="callout callout-info">
-                                <h4>No hay ninguna novedad cargada</h4>
+                                <h4>No hay ningún registro cargado</h4>
 
                                 <p>Por qué no subes una entrando <a
                                             href="{!! "@{{ route('admin.$json->table.create') }}" !!}">aquí</a>?</p>

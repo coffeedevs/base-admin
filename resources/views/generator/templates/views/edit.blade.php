@@ -5,7 +5,7 @@
         {!!  "@@include('includes.admin.messages')" !!}
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Editar Novedad</h3>
+                <h3 class="box-title"> Editar <b>{{$json->model}}</b></h3>
             </div>
             <?php $itemName = lcfirst($json->model); ?>
             <form role="form" method="post" enctype="multipart/form-data"
